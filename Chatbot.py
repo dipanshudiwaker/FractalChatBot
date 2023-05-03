@@ -10,7 +10,7 @@ from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv()) # read local .env file
 
 openai.organization = "org-NeUxZdSumGXnqAyfZX6vqScZ"
-openai.api_key  = "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"
+openai.api_key  = "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"
 
 
 # In[2]:
