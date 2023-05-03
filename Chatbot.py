@@ -54,7 +54,7 @@ def collect_messages(_):
 # In[5]:
 
 
-pip install panel
+
 
 
 # In[6]:
