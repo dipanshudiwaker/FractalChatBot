@@ -9,7 +9,7 @@ import openai
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv()) # read local .env file
 
-openai.api_key  = "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"
+openai.api_key  = "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"
 
 
 # In[2]:
