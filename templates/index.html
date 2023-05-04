@@ -89,7 +89,7 @@
         $('#chat-form').submit(function(event) {
           event.preventDefault();
           var message = $('#message-input').val();
-          $('#chat-container').append('<div class="chat-message user-message"><p>' + message + '</p></div>');
+          $('.chat-message').append('<div class="chat-message user-message"><p>' + message + '</p></div>');
           $('#message-input').val('');
           $.ajax({
             url: '/chat',
@@ -98,7 +98,7 @@
             dataType: 'json',
             success: function(response) {
               var botMessage = response.response;
-              $('.chat-message user-message').append('<div class="chat-message bot-message"><p>' + botMessage + '</p></div>');
+              $('.chat-message').append('<div class="chat-message bot-message"><p>' + botMessage + '</p></div>');
             }
           });
         });
