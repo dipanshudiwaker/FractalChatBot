@@ -122,12 +122,19 @@
         });
       });
      function stringContainsSequences(str) {
-	var sequences = ["hi", "hello", "what are you doing", "fractal"];
-	for (var i = 0; i < sequences.length; i++) {
-           if (str.indexOf(sequences[i]) === -1) {
-		return "No data Found";
-	  }
+	var sequences = ["fractal"];
+	 var count =0;
+	 for (var i = 0; i < sequences.length; i++) {
+           if (str.toLowerCase().includes(sequences[i])) {
+		   console.log('yes');
+		return str;
+	   }
+           else {
+		   console.log('No');
+	       return "No DATA FOUND";
+	   }
 	}
+	 
 	return str;
 	}    
     </script>
