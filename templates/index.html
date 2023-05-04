@@ -9,8 +9,8 @@
 	#chat-container {
 		
 		position: fixed;
-		bottom: 20px;
-		right: 70px;
+		bottom: 0px;
+		right: 0px;
 		width: 350px;
 		height: 500px;
 		border-radius: 10px;
@@ -47,17 +47,35 @@
 		font-size: 16px;
 	  }
 	  .inputField{
-		width: 95%;
-		border: none;
-		height: 25px;
-		outline: none;
-		padding-left: 15px;
-		background-color: transparent;
+	    width: 80%;
+	    margin: 0px 5px;
+	    height: 25px;
+	    outline: none;
+	    padding-left: 15px;
+	    border: none;
+	    background-color: transparent;
 	}
 	.inputField:focus{
 		outline:4px solid #007bff;
 		
 	}
+	
+	.btn{
+	   border: solid 1px #4ef;
+           background-color: #007bff;
+           padding: 7px;
+           border-radius: 13%;
+	}
+	
+	.chat-message{
+	margin: 15px 0px;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+	}
+	
 	#chat-form{
 	display:flex;
 	}
