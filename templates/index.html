@@ -115,12 +115,21 @@
             data: { message: message },
             dataType: 'json',
             success: function(response) {
-              var botMessage = response.response;
+              var botMessage = stringContainsSequences(response.response);
               $('.chat-body').append('<div class="chat-message bot-message"><p>' + botMessage + '</p></div>');
             }
           });
         });
       });
+     function stringContainsSequences(str) {
+	var sequences = ["hi", "hello", "what are you doing", "fractal"];
+	for (var i = 0; i < sequences.length; i++) {
+           if (str.indexOf(sequences[i]) === -1) {
+		return "No data Found";
+	  }
+	}
+	return str;
+	}    
     </script>
   </body>
 </html>  
