@@ -98,7 +98,7 @@
             dataType: 'json',
             success: function(response) {
               var botMessage = response.response;
-              $('#chat-container').append('<div class="chat-message bot-message"><p>' + botMessage + '</p></div>');
+              $('.message').append('<div class="chat-message bot-message"><p>' + botMessage + '</p></div>');
             }
           });
         });
