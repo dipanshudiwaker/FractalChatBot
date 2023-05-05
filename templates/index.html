@@ -129,7 +129,7 @@
             dataType: 'json',
             success: function(response) {
               var botMessage = stringContainsSequences(response.response);
-              $('.chat-body').append('<div class="chat-message bot-message"><p>' + botMessage + '</p></div>');
+              $('.chat-body').append('<div class="chat-message bot-message"><span><img src="https://e7.pngegg.com/pngimages/408/238/png-clipart-pink-and-blue-illustration-discord-computer-icons-logo-user-internet-bot-discord-icon-purple-angle-thumbnail.png"></span><p>' + botMessage + '</p></div>');
             }
           });
         });
