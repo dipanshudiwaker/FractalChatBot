@@ -101,7 +101,8 @@
 <body>
     <div id="chat-container">
 		<div class="chat-header">
-			<h1 style="margin:0px;">Personal Assistant</h1>
+			<img src="https://storage.demo.pardot.com/504581/16832718960ewyYEs0/FractalBot.png" style="width:55px heigth:55px;border-radius:50%;">
+			<span style="margin:0 3px;font-size:24px;">Personal Assistant</span>
 		</div>
 		<div class="chat-body">
 			<div id="chat-message system-message">
@@ -132,7 +133,7 @@
             dataType: 'json',
             success: function(response) {
               var botMessage = stringContainsSequences(response.response);
-              $('.chat-body').append('<div class="chat-message bot-message"><span><img style="width:25px;height:25px;" src="https://e7.pngegg.com/pngimages/408/238/png-clipart-pink-and-blue-illustration-discord-computer-icons-logo-user-internet-bot-discord-icon-purple-angle-thumbnail.png"></span><span>Adam</span><p>' + botMessage + '</p></div>');
+              $('.chat-body').append('<div class="chat-message bot-message"><span><img style="width:25px;height:25px;" src="https://e7.pngegg.com/pngimages/408/238/png-clipart-pink-and-blue-illustration-discord-computer-icons-logo-user-internet-bot-discord-icon-purple-angle-thumbnail.png"></span><span>Adam</span><ul style="list-style-type:none;"><li>' + botMessage + '</li></ul></div>');
             }
           });
         });
@@ -147,7 +148,7 @@
 	   }
            else {
 		   console.log('No');
-	       return "No Data Found";
+	       return "No Data Found. <br/> Please provide your email so we can reach out to you for Further Information.";
 	   }
 	}
 	 
