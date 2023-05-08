@@ -138,32 +138,27 @@
 	    console.log("No");
 	  }
 	}
-	function createPardotProspect(email) {
-	  var accessToken = "00D5g00000HMLXA!AQcAQMF2mcftGEv3I_nTbhLzAl..Gs0fBxO6K8EMga2MeJ7hLYNZK52dDywt9IXZcZjT_MzXS5ExZ29o95Gt3NVewZoPuZTs";
-	  var bussinesId = "0Uv5g0000008OQUCA2";
+	var myHeaders = new Headers();
+myHeaders.append("Pardot-Business-Unit-Id", "0Uv5g0000008OQUCA2");
+myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Authorization", "Bearer 00D5g00000HMLXA!AQcAQMF2mcftGEv3I_nTbhLzAl..Gs0fBxO6K8EMga2MeJ7hLYNZK52dDywt9IXZcZjT_MzXS5ExZ29o95Gt3NVewZoPuZTs");
+myHeaders.append("Cookie", "pardot=65iu56r8hdqbp3f50hkqkfadf2");
 
-	  var prospectData = {
-	    Email: email,
-	  };
+var raw = JSON.stringify({
+  "email": "prospect7@gmail.com"
+});
 
-	  fetch('https://pi.demo.pardot.com/api/v5/objects/prospects?fields=email', {
-             body: JSON.stringify(prospectData),		  
-	    method: "POST",
-	    headers: {
-	      "Content-Type": "application/json",
-	      Authorization: "Bearer " + accessToken,
-	      Pardot_business_unit: bussinesId   
-	    },
-	    body: JSON.stringify(prospectData)
-	  })
-	  .then(response => response.json())
-	  .then(data => {
-	    console.log("Prospect created in Pardot:", data);
-	  })
-	  .catch(error => {
-	    console.error("Error creating prospect in Pardot:", error);
-	  });
-	}
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("https://pi.demo.pardot.com/api/v5/objects/prospects?fields=email", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
 
 	
     
