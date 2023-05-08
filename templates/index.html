@@ -139,19 +139,19 @@
 	  }
 	}
 	function createPardotProspect(email) {
-	  var accessToken = "YOUR_ACCESS_TOKEN";
-	  var instanceURL = "YOUR_SALESFORCE_INSTANCE_URL";
+	  var accessToken = "00D5g00000HMLXA!AQcAQMF2mcftGEv3I_nTbhLzAl..Gs0fBxO6K8EMga2MeJ7hLYNZK52dDywt9IXZcZjT_MzXS5ExZ29o95Gt3NVewZoPuZTs";
+	  var bussinesId = "0Uv5g0000008OQUCA2";
 
 	  var prospectData = {
 	    Email: email,
-	    CampaignId: "YOUR_PARDOT_CAMPAIGN_ID"
 	  };
 
-	  fetch(instanceURL + "/services/data/v51.0/sobjects/Lead", {
+	  fetch("https://pi.demo.pardot.com/api/v5/objects/prospects?fields=email", {
 	    method: "POST",
 	    headers: {
 	      "Content-Type": "application/json",
-	      "Authorization": "Bearer " + accessToken
+	      "Authorization": "Bearer " + accessToken,
+	      "Pardot-Business-Unit-Id": bussinesId   
 	    },
 	    body: JSON.stringify(prospectData)
 	  })
