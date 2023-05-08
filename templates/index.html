@@ -136,11 +136,40 @@
 
 	  if (emailRegex.test(string) || businessEmailRegex.test(string)) {
 	    console.log("Yes");
-		emailStatus =true;   
+		emailStatus =true; 
+		createPardotProspect(string);  
 	  } else {
 	    console.log("No");
 	  }
 	}
+	function createPardotProspect(email) {
+	  var accessToken = "YOUR_ACCESS_TOKEN";
+	  var instanceURL = "YOUR_SALESFORCE_INSTANCE_URL";
+
+	  var prospectData = {
+	    Email: email,
+	    CampaignId: "YOUR_PARDOT_CAMPAIGN_ID"
+	  };
+
+	  fetch(instanceURL + "/services/data/v51.0/sobjects/Lead", {
+	    method: "POST",
+	    headers: {
+	      "Content-Type": "application/json",
+	      "Authorization": "Bearer " + accessToken
+	    },
+	    body: JSON.stringify(prospectData)
+	  })
+	  .then(response => response.json())
+	  .then(data => {
+	    console.log("Prospect created in Pardot:", data);
+	  })
+	  .catch(error => {
+	    console.error("Error creating prospect in Pardot:", error);
+	  });
+	}
+
+	
+    
 	    
       $(document).ready(function() {
         $('#chat-form').submit(function(event) {
