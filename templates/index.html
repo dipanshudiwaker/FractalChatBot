@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>OrderBot</title>
+    <title>Fractal Virtual Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   
 </head>
 <style>
 	
@@ -97,6 +99,11 @@
 	  display:flex;
           height:38px;
 	}
+	@media only screen and (max-width: 600px) {
+		#chat-container{
+		width:270px! important;
+		}
+	}
 	
 </style>
 
@@ -122,12 +129,14 @@
     
     
     <script>
+      var  emailStatus = false;
       function checkEmail(string) {
 	  var emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
 	  var businessEmailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\.[A-Z|a-z]{2,}\b/;
 
 	  if (emailRegex.test(string) || businessEmailRegex.test(string)) {
 	    console.log("Yes");
+		emailStatus =true;   
 	  } else {
 	    console.log("No");
 	  }
@@ -147,7 +156,11 @@
             dataType: 'json',
             success: function(response) {
               var botMessage = stringContainsSequences(response.response);
-	       botMessage=botMessage.replace(/\n/g, '<br>');   
+	       botMessage=botMessage.replace(/\n/g, '<br>');
+		if(emailStatus == true){
+		  botMessage="Thanks For Information.We can connect you Soon!";
+			emailStatus =false;
+		}    
               $('.chat-body').append('<div class="chat-message bot-message"><span><img style="width:25px;height:25px;" src="https://e7.pngegg.com/pngimages/408/238/png-clipart-pink-and-blue-illustration-discord-computer-icons-logo-user-internet-bot-discord-icon-purple-angle-thumbnail.png"></span><p>' + botMessage + '</p></div>');
             }
           });
