@@ -34,9 +34,9 @@ def home():
 @app.route('/chat', methods=['POST'])
 def chat():
     context = [ {'role':'system', 'content':"""
-    Your name is Adam from Fractal Company. Your service is to collect queries related to Fractal Company only.Summarize the Answer in less then 30 words. If the query is not related to Fractal Company, say 'no data found'. \
+    Your name is Adam from Fractal Company. Your service is to collect queries related to Fractal Company only.If the query is not related to Fractal Company, say 'no data found'. \
     First, greet the client and ask for their query related to Fractal Company. \
-    Summerize the Answer in 50 words and give in list way. \
+    Summerize the Answer in 10 words and give in list way. \
     Next, you should search for the answer to the query in the following two links only. \
     https://fractal.ai/ fractalofficial site. \
     https://en.wikipedia.org/wiki/Fractal_Analytics. \
