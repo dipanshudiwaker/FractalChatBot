@@ -108,7 +108,7 @@
 		</div>
 		<div class="chat-body">
 			<div id="chat-message system-message">
-				<div class="message">Hello, how can I assist you?</div>
+				<div class="message">Hello, I'm Adam.<br/> how can I assist you?</div>
 			</div
                 </div> 
  </div>
@@ -122,10 +122,22 @@
     
     
     <script>
+      function checkEmail(string) {
+	  var emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
+	  var businessEmailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\.[A-Z|a-z]{2,}\b/;
+
+	  if (emailRegex.test(string) || businessEmailRegex.test(string)) {
+	    console.log("Yes");
+	  } else {
+	    console.log("No");
+	  }
+	}
+	    
       $(document).ready(function() {
         $('#chat-form').submit(function(event) {
           event.preventDefault();
           var message = $('#message-input').val();
+	  checkEmail(message);
           $('.chat-body').append('<div class="chat-message user-message"><p>' + message + '</p></div>');
           $('#message-input').val('');
           $.ajax({
@@ -146,12 +158,10 @@
 	 var count =0;
 	 for (var i = 0; i < sequences.length; i++) {
            if (str.toLowerCase().includes(sequences[i])) {
-		   console.log('yes');
 		return str;
 	   }
            else {
-		   console.log('No');
-	       return "No Data Found. <br/> Please provide your email so we can reach out to you for Further Information.";
+	       return "We appreciate your interest in our services! <br/> In order to provide you with further information, kindly share your email address with us";
 	   }
 	}
 	 
