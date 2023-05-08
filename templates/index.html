@@ -158,7 +158,8 @@
 			emailStatus =false;
 		}    
               $('.chat-body').append('<div class="chat-message bot-message"><span><img style="width:25px;height:25px;" src="https://e7.pngegg.com/pngimages/408/238/png-clipart-pink-and-blue-illustration-discord-computer-icons-logo-user-internet-bot-discord-icon-purple-angle-thumbnail.png"></span><p>' + botMessage + '</p></div>');
-            }
+              $('.chat-body').scrollTop = $('.chat-body').scrollHeight;
+	    }
           });
         });
       });
