@@ -26,6 +26,20 @@ def get_completion_from_messages(messages, model="gpt-3.5-turbo", temperature=0)
         temperature=temperature, # this is the degree of randomness of the model's output
     )
     return response.choices[0].message["content"]
+def gettoken():
+    params = {
+    "grant_type": "password",
+    "client_id": "XXX.YYY", # Consumer Key
+    "client_secret": "0000000000000000", # Consumer Secret
+    "username": "my@email.com", # The email you use to login
+    "password": "MyPasswordMySecurityToken" # Concat your password and your security token
+    }
+    r = requests.post("https://login.salesforce.com/services/oauth2/token", params=params)
+    # if you connect to a Sandbox, use test.salesforce.com instead
+    access_token = r.json().get("access_token")
+    instance_url = r.json().get("instance_url")
+    print("Access Token:", access_token)
+    print("Instance URL", instance_url)
 
 @app.route('/')
 def home():
