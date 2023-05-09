@@ -36,7 +36,7 @@ def gettoken():
 	      "username":"dipanshu@aethereus.com",
 	      "password":"6376Dip#@PPkkvprQvWSHUTAojNnKzlp20"
          }
-    r = requests.post("https://login.salesforce.com/services/oauth2/token", params=params)
+    r = requests.post("https://login.salesforce.com/services/oauth2/authorize", params=params)
     # if you connect to a Sandbox, use test.salesforce.com instead
     access_token = r.json().get("access_token")
     instance_url = r.json().get("instance_url")
