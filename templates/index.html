@@ -172,7 +172,7 @@ function createPardotProspect(string) {
           headers: {
             "content-type": "application/json",
             Authorization: "Bearer  " + apiKey,
-	    Pardot-Business-Unit-Id: id,	  
+	    "Pardot-Business-Unit-Id": id,	  
           },
         }).then((response) => {
           if (response.ok) {
