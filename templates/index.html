@@ -161,7 +161,31 @@
 // 	  .catch(error => console.log('error', error));
 
 //  }
+	    
+function gettoken()
+	{
+		cosnole.log("runn");
+	    var param = {
+	      grant_type: "password",
+	      client_id : "3MVG9fe4g9fhX0E4rB1MeKF0UTY8d.BfWC1fpNzcEnf1wCORzrGfNPm64md_XWUuqPFHYDftDrFrvsB7QFPC9",
+	      client_secret : "7D49B72A5DDD71190A680E9CEB2533C429ABF69EDD477828D422320782EE78AF",
+	      username:"dipanshu@aethereus.com",
+	      password:"6376Dip#@PPkkvprQvWSHUTAojNnKzlp20"};
+	$.ajax({
+	    url: 'https://login.salesforce.com/services/oauth2/authorize',
+	    type: 'POST',
+	    data: param,
+	    dataType: "json",
+	    contentType: "application/x-www-form-urlencoded",
+	    success: function (data) {
+		alert(data);
+		   console.log(data); 
+	    }
+
+	});
+	}	    
 function createPardotProspect(string) {
+	gettoken();
         const apiKey = "00D5g00000HMLXA!AQcAQCeOUKWeJgBlvzkTD37LaR1DvpU7HWL3OlqpALKTzDwTcSN6MUiWmX6PVJV8J7R9n_PlHO1SdfeOzS6209XiWfM5U4qs";
 	const id = "0Uv5g0000008OQUCA2";
         fetch(`https://pi.demo.pardot.com/api/v5/objects/prospects?fields=email`, {
