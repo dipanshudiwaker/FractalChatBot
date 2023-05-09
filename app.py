@@ -29,11 +29,11 @@ def get_completion_from_messages(messages, model="gpt-3.5-turbo", temperature=0)
 
 def gettoken():
     params = {
-              grant_type: "password",
-	      client_id : "3MVG9fe4g9fhX0E4rB1MeKF0UTY8d.BfWC1fpNzcEnf1wCORzrGfNPm64md_XWUuqPFHYDftDrFrvsB7QFPC9",
-	      client_secret : "7D49B72A5DDD71190A680E9CEB2533C429ABF69EDD477828D422320782EE78AF",
-	      username:"dipanshu@aethereus.com",
-	      password:"6376Dip#@PPkkvprQvWSHUTAojNnKzlp20"
+              "grant_type": "password",
+	      "client_id": "3MVG9fe4g9fhX0E4rB1MeKF0UTY8d.BfWC1fpNzcEnf1wCORzrGfNPm64md_XWUuqPFHYDftDrFrvsB7QFPC9",
+	      "client_secret" : "7D49B72A5DDD71190A680E9CEB2533C429ABF69EDD477828D422320782EE78AF",
+	      "username":"dipanshu@aethereus.com",
+	      "password":"6376Dip#@PPkkvprQvWSHUTAojNnKzlp20"
          }
     r = requests.post("https://login.salesforce.com/services/oauth2/token", params=params)
     # if you connect to a Sandbox, use test.salesforce.com instead
