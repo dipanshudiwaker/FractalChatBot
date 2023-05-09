@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, request
 import openai
 from dotenv import load_dotenv, find_dotenv
+import requests
 
 load_dotenv(find_dotenv()) # read local .env file
 
