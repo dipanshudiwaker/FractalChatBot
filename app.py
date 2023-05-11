@@ -38,8 +38,13 @@ def get_completion_from_messages(messages, model="gpt-3.5-turbo", temperature=0)
 def extract_email(string):
     pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b'
     match = re.search(pattern, string)
+    keywords = ['fractal latest news', ' fractal news']
+    pattern = r"\b(?:{})\b".format("|".join(map(re.escape, keywords)))
+    matches = re.findall(pattern, text, flags=re.IGNORECASE)
     if match:
         return match.group()
+    else if matches:
+        newsroom()
     else:
         return None
 
@@ -78,16 +83,17 @@ def createprospect(email1):
     response = requests.request("POST", url, headers=headers, data=payload) 
     print(response.text)
     
-def newsroom(news):
+def newsroom():
     nltk.download('punkt')
     user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
     config = Config()
     config.browser_user_agent = user_agent
     googlenews=GoogleNews(start='04/01/2023',end='05/11/2023')
-    googlenews.search()
+    googlenews.search('Fractal')
     result=googlenews.result()
     df=pd.DataFrame(result)
     print(df.head())
+    print('working')
 
 
 @app.route('/')
