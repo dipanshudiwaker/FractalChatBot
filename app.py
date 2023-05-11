@@ -29,17 +29,20 @@ def get_completion_from_messages(messages, model="gpt-3.5-turbo", temperature=0)
     return response.choices[0].message["content"]
 
 def gettoken():
-    params = {
-              "grant_type": "password",
-	      "client_id": "3MVG9fe4g9fhX0E4rB1MeKF0UTY8d.BfWC1fpNzcEnf1wCORzrGfNPm64md_XWUuqPFHYDftDrFrvsB7QFPC9",
-	      "client_secret" : "7D49B72A5DDD71190A680E9CEB2533C429ABF69EDD477828D422320782EE78AF",
-	      "username":"dipanshu@aethereus.com",
-	      "password":"6376Dip#@PPkkvprQvWSHUTAojNnKzlp20"
-         }
-    r = requests.get("https://login.salesforce.com/services/oauth2/authorize", params=params)
-    # if you connect to a Sandbox, use test.salesforce.com instea
-    print("Access Token:", r)
-    return access_token
+	url = "https://login.salesforce.com/services/oauth2/token"
+	payload = {'client_id': '3MVG9fe4g9fhX0E4rB1MeKF0UTUC0MIyoSgh1s93CRKKtf0Jqt2Tu7087Isfn2kAFc._.530IW.XtK3lowSxk',
+	'client_secret': 'BA2470D1D4FF3761AA981A03773AC01547A5E7CBA35B116247702F858902B302',
+	'username': 'dipanshu@aethereus.com',
+	'password': '112001Dip#@kay6opTZTXbwtnwgepw0mJoyi',
+	'grant_type': 'password'}
+	files=[
+
+	]
+	headers = {}
+	response = requests.request("POST", url, headers=headers, data=payload, files=files)
+	print(response.text)
+
+    return response
 
 @app.route('/')
 def home():
