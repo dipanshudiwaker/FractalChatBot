@@ -149,13 +149,15 @@ def chat():
     message1=message	
     email1 = extract_email(message1)
     if email1:
-         print(email1)
-	 createprospect(email1)
-		
+        print(email1)
+        createprospect(email1)
     context.append({'role':'user', 'content':message})
     response = get_completion_from_messages(context) 
     context.append({'role':'assistant', 'content':response})
     return {'response': response}
+
+
+    
 
 
     
