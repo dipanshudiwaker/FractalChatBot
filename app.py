@@ -63,7 +63,7 @@ def createprospect(email1):
     api = gettoken()
     print(api)
     url = "https://pi.demo.pardot.com/api/v5/objects/prospects?fields=email"
-    payload = json.dumps({"email": email1})
+    payload = json.dumps({"email": "prospectPython@gmail.com"})
     headers = {
      'Pardot-Business-Unit-Id': '0Uv5g0000008OQUCA2',
      'Content-Type': 'application/json',
