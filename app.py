@@ -42,7 +42,6 @@ def gettoken():
 	response = requests.request("POST", url, headers=headers, data=payload, files=files)
 	print(response.text)
 
-    return response
 
 @app.route('/')
 def home():
