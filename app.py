@@ -4,6 +4,7 @@ import openai
 from dotenv import load_dotenv, find_dotenv
 import requests
 import re
+import json
 
 load_dotenv(find_dotenv()) # read local .env file
 
