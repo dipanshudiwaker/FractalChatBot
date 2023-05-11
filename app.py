@@ -43,7 +43,7 @@ def extract_email(string):
     matches = re.findall(pattern, text, flags=re.IGNORECASE)
     if match:
         return match.group()
-    else if matches:
+    elif matches:
         newsroom()
     else:
         return None
