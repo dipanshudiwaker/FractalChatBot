@@ -2,6 +2,9 @@ import os
 from flask import Flask, render_template, request
 import openai
 from dotenv import load_dotenv, find_dotenv
+import requests
+import re
+import json
 
 load_dotenv(find_dotenv()) # read local .env file
 
@@ -26,6 +29,50 @@ def get_completion_from_messages(messages, model="gpt-3.5-turbo", temperature=0)
         temperature=temperature, # this is the degree of randomness of the model's output
     )
     return response.choices[0].message["content"]
+
+def extract_email(string):
+    pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b'
+    match = re.search(pattern, string)
+    if match:
+        return match.group()
+    else:
+        return None
+
+def gettoken():
+    url = "https://login.salesforce.com/services/oauth2/token"
+    payload = {
+     'client_id': '3MVG9fe4g9fhX0E4rB1MeKF0UTUC0MIyoSgh1s93CRKKtf0Jqt2Tu7087Isfn2kAFc._.530IW.XtK3lowSxk',
+     'client_secret': 'BA2470D1D4FF3761AA981A03773AC01547A5E7CBA35B116247702F858902B302',
+     'username': 'dipanshu@aethereus.com',
+     'password': '112001Dip#@kay6opTZTXbwtnwgepw0mJoyi',
+     'grant_type': 'password'
+           }
+    files=[
+          ]
+    headers = {}
+    response = requests.request("POST", url, headers=headers, data=payload, files=files)
+    access_token = response.json().get("access_token")
+    instance_url = response.json().get("instance_url")
+    print("Access Token:", access_token)
+    print("Instance URL", instance_url)
+    return access_token
+    
+
+def createprospect(email1):
+    print(email1)
+    api = gettoken()
+    print(api)
+    url = "https://pi.demo.pardot.com/api/v5/objects/prospects?fields=email"
+    payload = json.dumps({"email": email1})
+    headers = {
+     'Pardot-Business-Unit-Id': '0Uv5g0000008OQUCA2',
+     'Content-Type': 'application/json',
+     'Authorization': 'Bearer '+api,
+     'Cookie': 'pardot=48csbc6a7e6olpppml1kmjbgj2'
+    }
+    response = requests.request("POST", url, headers=headers, data=payload) 
+    print(response.text)
+
 
 @app.route('/')
 def home():
@@ -104,6 +151,11 @@ def chat():
 
     
     message = request.form['message']
+    message1=message	
+    email1 = extract_email(message1)
+    if email1:
+        print(email1)
+        createprospect(email1)
     context.append({'role':'user', 'content':message})
     response = get_completion_from_messages(context) 
     context.append({'role':'assistant', 'content':response})
