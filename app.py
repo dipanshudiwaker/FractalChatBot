@@ -125,8 +125,8 @@ def chat():
     context.append({'role':'assistant', 'content':response})
     return {'response': response}
 
-@app.route('/emailResponse', methods=['POST'])
-def emailResponse():
+@app.route('/emailresponse', methods=['POST'])
+def emailresponse():
     message = request.form['string']	
     print(message)
     api = gettoken()
