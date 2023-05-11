@@ -41,6 +41,7 @@ def gettoken():
 	headers = {}
 	response = requests.request("POST", url, headers=headers, data=payload, files=files)
 	print(response.text)
+	return response.text
 
 
 @app.route('/')
