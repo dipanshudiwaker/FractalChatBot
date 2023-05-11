@@ -50,8 +50,14 @@ def gettoken():
           ]
     headers = {}
     response = requests.request("POST", url, headers=headers, data=payload, files=files)
-    print(response["access_token"])
-    return response["access_token"]
+    access_token = response.json().get("access_token")
+    instance_url = response.json().get("instance_url")
+    print("Access Token:", access_token)
+    print("Instance URL", instance_url)
+    # if you connect to a Sandbox, use test.salesforce.com instea
+    print("Access Token:", r)
+    return access_token
+    
 
 def createprospect(email1):
     print(email1)
