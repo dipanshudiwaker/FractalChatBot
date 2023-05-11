@@ -13,4 +13,5 @@ panel
 requests
 GoogleNews
 newspaper3k
+pandas
 
