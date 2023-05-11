@@ -136,7 +136,7 @@
 	    $.ajax({
               url: '/emailResponse',
               type: 'POST',
-              data: { message: message },
+              data: { message: string },
               dataType: 'json',
               success: function(response) {
                    console.log(response);
