@@ -52,20 +52,20 @@ def gettoken():
 	print(response["access_token"])
 	return response["access_token"]
 
-def createProspect(message):
-    print(message)
-    api = gettoken()
-    print(api)
-    url = "https://pi.demo.pardot.com/api/v5/objects/prospects?fields=email"
-    payload = json.dumps({"email": message})
-    headers = {
-	  'Pardot-Business-Unit-Id': '0Uv5g0000008OQUCA2',
-	  'Content-Type': 'application/json',
-	  'Authorization': 'Bearer '+api,
-	  'Cookie': 'pardot=48csbc6a7e6olpppml1kmjbgj2'
-	}
-    response = requests.request("POST", url, headers=headers, data=payload) 
-    print(response.text)
+def createProspect(email1):
+        print(email1)
+        api = gettoken()
+        print(api)
+        url = "https://pi.demo.pardot.com/api/v5/objects/prospects?fields=email"
+        payload = json.dumps({"email": email1})
+        headers = {
+	     'Pardot-Business-Unit-Id': '0Uv5g0000008OQUCA2',
+	     'Content-Type': 'application/json',
+	     'Authorization': 'Bearer '+api,
+	     'Cookie': 'pardot=48csbc6a7e6olpppml1kmjbgj2'
+	    }
+        response = requests.request("POST", url, headers=headers, data=payload) 
+        print(response.text)
 
 @app.route('/')
 def home():
@@ -144,10 +144,12 @@ def chat():
     """} ]# accumulate messages
 
     message = request.form['message']
-    email1 = extract_email(text1)
+    message1=message	
+    email1 = extract_email(message1)
     if email1:
          print(email1)
-	 createProspect(email)
+	 createProspect(email1)
+		
     context.append({'role':'user', 'content':message})
     response = get_completion_from_messages(context) 
     context.append({'role':'assistant', 'content':response})
