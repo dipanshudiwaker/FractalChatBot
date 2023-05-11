@@ -52,7 +52,7 @@ def gettoken():
 	print(response["access_token"])
 	return response["access_token"]
 
-def createProspect(email1):
+def createprospect(email1):
         print(email1)
         api = gettoken()
         print(api)
@@ -148,7 +148,7 @@ def chat():
     email1 = extract_email(message1)
     if email1:
          print(email1)
-	 createProspect(email1)
+	 createprospect(email1)
 		
     context.append({'role':'user', 'content':message})
     response = get_completion_from_messages(context) 
