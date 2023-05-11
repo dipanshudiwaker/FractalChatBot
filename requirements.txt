@@ -13,4 +13,4 @@ panel
 requests
 GoogleNews
 newspaper3k
-ntlk
+
