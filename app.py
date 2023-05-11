@@ -3,6 +3,7 @@ from flask import Flask, render_template, request
 import openai
 from dotenv import load_dotenv, find_dotenv
 import requests
+import re
 
 load_dotenv(find_dotenv()) # read local .env file
 
@@ -28,6 +29,14 @@ def get_completion_from_messages(messages, model="gpt-3.5-turbo", temperature=0)
     )
     return response.choices[0].message["content"]
 
+def extract_email(string):
+    pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b'
+    match = re.search(pattern, string)
+    if match:
+        return match.group()
+    else:
+        return None
+
 def gettoken():
 	url = "https://login.salesforce.com/services/oauth2/token"
 	payload = {'client_id': '3MVG9fe4g9fhX0E4rB1MeKF0UTUC0MIyoSgh1s93CRKKtf0Jqt2Tu7087Isfn2kAFc._.530IW.XtK3lowSxk',
@@ -43,14 +52,7 @@ def gettoken():
 	print(response["access_token"])
 	return response["access_token"]
 
-
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-@app.route('/emailresponse', methods=['POST'])
-def emailresponse():
-    message = request.form['string']	
+def createProspect(message):
     print(message)
     api = gettoken()
     print(api)
@@ -64,6 +66,11 @@ def emailresponse():
 	}
     response = requests.request("POST", url, headers=headers, data=payload) 
     print(response.text)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
 
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -137,6 +144,10 @@ def chat():
     """} ]# accumulate messages
 
     message = request.form['message']
+    email1 = extract_email(text1)
+    if email1:
+         print(email1)
+	 createProspect(email)
     context.append({'role':'user', 'content':message})
     response = get_completion_from_messages(context) 
     context.append({'role':'assistant', 'content':response})
