@@ -119,6 +119,14 @@ def chat():
     If the answer to the query is not found in these two links, say 'no data found'. \
     """} ]# accumulate messages
 
+    message = request.form['message']
+    context.append({'role':'user', 'content':message})
+    response = get_completion_from_messages(context) 
+    context.append({'role':'assistant', 'content':response})
+    return {'response': response}
+
+@app.route('/emailResponse', methods=['POST'])
+def emailResponse():
     gettoken()
     message = request.form['message']
     context.append({'role':'user', 'content':message})
