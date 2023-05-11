@@ -11,3 +11,6 @@ openai
 python-dotenv
 panel
 requests
+GoogleNews
+newspaper3k
+ntlk
