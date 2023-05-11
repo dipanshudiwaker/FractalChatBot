@@ -126,26 +126,7 @@
     
     <script>
       var  emailStatus = false;
-      function checkEmail(string) {
-	  var emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
-	  var businessEmailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\.[A-Z|a-z]{2,}\b/;
-
-	  if (emailRegex.test(string) || businessEmailRegex.test(string)) {
-	    console.log("Yes");
-	    emailStatus =true;
-	    $.ajax({
-              url: '/emailresponse',
-              type: 'POST',
-              data: { message: string },
-              dataType: 'json',
-              success: function(response) {
-                   console.log(response);
-	         }     
-            });
-	  } else {
-	    console.log("No");
-	  }
-	}
+    
 // 	function  createPardotProspect(string){   
 // 	var myHeaders = new Headers();
 //         myHeaders.append("Pardot-Business-Unit-Id", "0Uv5g0000008OQUCA2");
@@ -196,6 +177,26 @@
           });
         });
       });
+  function checkEmail(string) {
+	  var emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
+	  var businessEmailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\.[A-Z|a-z]{2,}\b/;
+
+	  if (emailRegex.test(string) || businessEmailRegex.test(string)) {
+	    console.log("Yes");
+	    emailStatus =true;
+	    $.ajax({
+              url: '/emailresponse',
+              type: 'POST',
+              data: { message: string },
+              dataType: 'json',
+              success: function(response) {
+                   console.log(response);
+	         }     
+            });
+	  } else {
+	    console.log("No");
+	  }
+	}	    
      function stringContainsSequences(str) {
 	var sequences = ["fractal"];
 	 var count =0;
