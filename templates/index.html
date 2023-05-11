@@ -132,7 +132,16 @@
 
 	  if (emailRegex.test(string) || businessEmailRegex.test(string)) {
 	    console.log("Yes");
-		emailStatus =true; 
+	    emailStatus =true;
+	    $.ajax({
+              url: '/emailResponse',
+              type: 'POST',
+              data: { message: message },
+              dataType: 'json',
+              success: function(response) {
+                   console.log(response);
+	         }     
+            });
 	  } else {
 	    console.log("No");
 	  }
