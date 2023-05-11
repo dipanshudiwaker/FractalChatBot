@@ -132,10 +132,8 @@ def emailResponse():
     api = gettoken()
     print(api)
     url = "https://pi.demo.pardot.com/api/v5/objects/prospects?fields=email"
-    payload = json.dumps({
-	  "email": message
-	})
-     headers = {
+    payload = json.dumps({"email": message})
+    headers = {
 	  'Pardot-Business-Unit-Id': '0Uv5g0000008OQUCA2',
 	  'Content-Type': 'application/json',
 	  'Authorization': 'Bearer '+api,
