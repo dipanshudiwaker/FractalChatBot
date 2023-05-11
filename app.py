@@ -40,7 +40,7 @@ def extract_email(string):
     match = re.search(pattern, string)
     keywords = ['fractal latest news', ' fractal news']
     pattern = r"\b(?:{})\b".format("|".join(map(re.escape, keywords)))
-    matches = re.findall(pattern, text, flags=re.IGNORECASE)
+    matches = re.findall(pattern, string, flags=re.IGNORECASE)
     if match:
         return match.group()
     elif matches:
