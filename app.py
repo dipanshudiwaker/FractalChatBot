@@ -86,6 +86,7 @@ def createprospect(email1):
 def newsroom():
     nltk.download('punkt')
     user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    print('working')
     config = Config()
     config.browser_user_agent = user_agent
     googlenews=GoogleNews(start='04/01/2023',end='05/11/2023')
@@ -93,7 +94,7 @@ def newsroom():
     result=googlenews.result()
     df=pd.DataFrame(result)
     print(df.head())
-    print('working')
+    
 
 
 @app.route('/')
