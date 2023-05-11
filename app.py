@@ -127,7 +127,7 @@ def chat():
 
 @app.route('/emailResponse', methods=['POST'])
 def emailResponse():
-    message = request.form['message']	
+    message = request.form['string']	
     print(message)
     api = gettoken()
     print(api)
