@@ -52,7 +52,6 @@ def gettoken():
     response = requests.request("POST", url, headers=headers, data=payload, files=files)
     print(response["access_token"])
     return response["access_token"]
-
 def createprospect(email1):
     print(email1)
     api = gettoken()
