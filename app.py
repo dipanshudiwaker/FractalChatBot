@@ -5,6 +5,11 @@ from dotenv import load_dotenv, find_dotenv
 import requests
 import re
 import json
+from GoogleNews import GoogleNews
+from newspaper import Article
+from newspaper import Config
+import pandas as pd
+import nltk
 
 load_dotenv(find_dotenv()) # read local .env file
 
@@ -72,6 +77,17 @@ def createprospect(email1):
     }
     response = requests.request("POST", url, headers=headers, data=payload) 
     print(response.text)
+    
+def newsroom(news):
+    nltk.download('punkt')
+    user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    config = Config()
+    config.browser_user_agent = user_agent
+    googlenews=GoogleNews(start='04/01/2023',end='05/11/2023')
+    googlenews.search()
+    result=googlenews.result()
+    df=pd.DataFrame(result)
+    print(df.head())
 
 
 @app.route('/')
