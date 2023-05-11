@@ -54,8 +54,6 @@ def gettoken():
     instance_url = response.json().get("instance_url")
     print("Access Token:", access_token)
     print("Instance URL", instance_url)
-    # if you connect to a Sandbox, use test.salesforce.com instea
-    print("Access Token:", r)
     return access_token
     
 
