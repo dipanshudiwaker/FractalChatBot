@@ -184,18 +184,18 @@
 	  if (emailRegex.test(string) || businessEmailRegex.test(string)) {
 	    console.log("Yes");
 	    emailStatus =true;
-	    $.ajax({
-              url: '/emailresponse',
-              type: 'POST',
-              data: { message: string },
-              dataType: 'json',
-              success: function(response) {
-                   console.log(response);
-	         }     
-            });
-	  } else {
-	    console.log("No");
-	  }
+// 	    $.ajax({
+//               url: '/emailresponse',
+//               type: 'POST',
+//               data: { message: string },
+//               dataType: 'json',
+//               success: function(response) {
+//                    console.log(response);
+// 	         }     
+//             });
+// 	  } else {
+// 	    console.log("No");
+// 	  }
 	}	    
      function stringContainsSequences(str) {
 	var sequences = ["fractal"];
