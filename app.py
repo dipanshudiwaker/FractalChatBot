@@ -48,6 +48,23 @@ def gettoken():
 def home():
     return render_template('index.html')
 
+@app.route('/emailresponse', methods=['POST'])
+def emailresponse():
+    message = request.form['string']	
+    print(message)
+    api = gettoken()
+    print(api)
+    url = "https://pi.demo.pardot.com/api/v5/objects/prospects?fields=email"
+    payload = json.dumps({"email": message})
+    headers = {
+	  'Pardot-Business-Unit-Id': '0Uv5g0000008OQUCA2',
+	  'Content-Type': 'application/json',
+	  'Authorization': 'Bearer '+api,
+	  'Cookie': 'pardot=48csbc6a7e6olpppml1kmjbgj2'
+	}
+    response = requests.request("POST", url, headers=headers, data=payload) 
+    print(response.text)
+
 @app.route('/chat', methods=['POST'])
 def chat():
     context = [ {'role':'system', 'content':"""
@@ -125,22 +142,7 @@ def chat():
     context.append({'role':'assistant', 'content':response})
     return {'response': response}
 
-@app.route('/emailresponse', methods=['POST'])
-def emailresponse():
-    message = request.form['string']	
-    print(message)
-    api = gettoken()
-    print(api)
-    url = "https://pi.demo.pardot.com/api/v5/objects/prospects?fields=email"
-    payload = json.dumps({"email": message})
-    headers = {
-	  'Pardot-Business-Unit-Id': '0Uv5g0000008OQUCA2',
-	  'Content-Type': 'application/json',
-	  'Authorization': 'Bearer '+api,
-	  'Cookie': 'pardot=48csbc6a7e6olpppml1kmjbgj2'
-	}
-    response = requests.request("POST", url, headers=headers, data=payload) 
-    print(response.text)
+
     
 
 if __name__ == '__main__':
