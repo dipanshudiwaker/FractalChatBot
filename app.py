@@ -40,8 +40,8 @@ def gettoken():
 	]
 	headers = {}
 	response = requests.request("POST", url, headers=headers, data=payload, files=files)
-	print(response.text)
-	return response.text
+	print(response["access_token"])
+	return response["access_token"]
 
 
 @app.route('/')
@@ -127,12 +127,23 @@ def chat():
 
 @app.route('/emailResponse', methods=['POST'])
 def emailResponse():
-    gettoken()
-    message = request.form['message']
-    context.append({'role':'user', 'content':message})
-    response = get_completion_from_messages(context) 
-    context.append({'role':'assistant', 'content':response})
-    return {'response': response}
+    message = request.form['message']	
+    print(message)
+    api = gettoken()
+    print(api)
+    url = "https://pi.demo.pardot.com/api/v5/objects/prospects?fields=email"
+    payload = json.dumps({
+	  "email": message
+	})
+     headers = {
+	  'Pardot-Business-Unit-Id': '0Uv5g0000008OQUCA2',
+	  'Content-Type': 'application/json',
+	  'Authorization': 'Bearer '+api,
+	  'Cookie': 'pardot=48csbc6a7e6olpppml1kmjbgj2'
+	}
+    response = requests.request("POST", url, headers=headers, data=payload) 
+    print(response.text)
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
