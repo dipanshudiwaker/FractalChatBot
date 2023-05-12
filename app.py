@@ -44,6 +44,7 @@ def extract_email(string):
     if match:
         return match.group()
     elif matches:
+        print('newsBlok')
         newsroom()
     else:
         return None
@@ -84,17 +85,13 @@ def createprospect(email1):
     print(response.text)
     
 def newsroom():
-    nltk.download('punkt')
-    user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
-    print('working')
-    config = Config()
-    config.browser_user_agent = user_agent
-    googlenews=GoogleNews(start='04/01/2023',end='05/11/2023')
-    googlenews.search('Fractal')
-    result=googlenews.result()
-    df=pd.DataFrame(result)
-    print(df.head())
-    
+    url = ('https://newsapi.org/v2/everything?'
+    'q=Apple&'
+    'from=2023-05-12&'
+    'sortBy=popularity&'
+    'apiKey=da8f74995552456faba341a02af4a034')
+     response = requests.get(url)
+     print(r.json)    
 
 
 @app.route('/')
