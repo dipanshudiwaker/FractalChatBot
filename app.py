@@ -41,14 +41,15 @@ def extract_email(string):
     keywords = ['fractal latest news', ' fractal news']
     pattern1 = r"\b(?:{})\b".format("|".join(map(re.escape, keywords)))
     matches = re.findall(pattern1, string, flags=re.IGNORECASE)
-    print(matches)
+    print("newsBlock", matches)
     if match:
         return match.group()
-    elif matches:
-        print('newsBlok')
-        newsroom()
     else:
         return None
+    if matches:
+        newsroom()
+    else:
+        none
 
 def gettoken():
     url = "https://login.salesforce.com/services/oauth2/token"
