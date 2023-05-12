@@ -90,8 +90,8 @@ def newsroom():
     'from=2023-05-12&'
     'sortBy=popularity&'
     'apiKey=da8f74995552456faba341a02af4a034')
-     response = requests.get(url)
-     print(r.json)    
+    response = requests.get(url)
+    print(r.json)    
 
 
 @app.route('/')
