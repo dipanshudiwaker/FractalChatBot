@@ -93,7 +93,7 @@ def newsroom():
     'sortBy=popularity&'
     'apiKey=da8f74995552456faba341a02af4a034')
     response = requests.get(url)
-    print(r.json)    
+    print(response.json)    
 
 
 @app.route('/')
