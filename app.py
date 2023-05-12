@@ -45,11 +45,9 @@ def extract_email(string):
     if match:
         return match.group()
     else:
-        return None
-    if matches:
         newsroom()
-    else:
-        none
+        return None
+   
 
 def gettoken():
     url = "https://login.salesforce.com/services/oauth2/token"
